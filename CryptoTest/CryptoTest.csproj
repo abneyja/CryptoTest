@@ -33,14 +33,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Binance.Net, Version=7.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Binance.Net.7.2.1\lib\netstandard2.0\Binance.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Coinbase, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Coinbase.6.0.1\lib\net461\Coinbase.dll</HintPath>
+    </Reference>
+    <Reference Include="CryptoExchange.Net, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CryptoExchange.Net.4.2.0\lib\netstandard2.0\CryptoExchange.Net.dll</HintPath>
     </Reference>
     <Reference Include="Flurl, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Flurl.3.0.1\lib\net461\Flurl.dll</HintPath>
     </Reference>
     <Reference Include="Flurl.Http, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Flurl.Http.3.0.1\lib\net461\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -58,8 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CryptoTestBinance.cs" />
     <Compile Include="CryptoTestHelper.cs" />
-    <Compile Include="CrytoTestCoinbase.cs" />
+    <Compile Include="CryptoTestCoinbase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

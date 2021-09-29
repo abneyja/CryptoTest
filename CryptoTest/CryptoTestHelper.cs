@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace CryptoTest
 {
-    abstract class CryptoTestHelper
+    public abstract class CryptoTestHelper
     {
-        protected abstract Task get_spot_Price();
+        public abstract Task get_spot_Price_of_ETHUSD();
     }
 }
