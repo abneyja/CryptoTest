@@ -3,37 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Coinbase;
+using Coinbase.Pro;
 
 namespace CryptoTest
 {
-    class CryptoTestCoinbase : CryptoTestHelper
+    class CryptoTestCoinbasePro : CryptoTestHelper
     {
-        private CoinbaseClient client;
+        private CoinbaseProClient client;
 
-        public CryptoTestCoinbase()
+        public CryptoTestCoinbasePro()
         {
             //No authentication
             //  - Useful only for Data Endpoints that don't require authentication.
-            client = new CoinbaseClient();
+            client = new CoinbaseProClient();
         }
 
         public override async Task get_spot_Price_of_ETHUSD()
         {
-            var spot = await client.Data.GetSpotPriceAsync("ETH-USD");
+            /*var spot = await client.MarketData
             if (!spot.HasError())
             {
                 System.Diagnostics.Debug.WriteLine("Coinbase CallResult Symbol: " + spot.Data.Base + " Currency: " + spot.Data.Currency + " Price: " + spot.Data.Amount);
             }
             else
                 System.Diagnostics.Debug.WriteLine("Call error coinbase: " + spot.Errors.ToString());
-
+            */
         }
 
         public override async Task get_aggTrades(string symbol, int intervalAttr, int spanAttr, DateTime start_time_interval,
             DateTime end_time_interval, DateTime ending_date_time, string filename_of_csv)
         {
-             
+
         }
     }
 }
