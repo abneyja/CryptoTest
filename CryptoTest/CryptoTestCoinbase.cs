@@ -30,8 +30,8 @@ namespace CryptoTest
 
         }
 
-        public override async Task get_aggTrades(string symbol, int intervalAttr, int spanAttr, DateTime start_time_interval,
-            DateTime end_time_interval, DateTime ending_date_time, string filename_of_csv)
+        public override async Task get_aggTrades(string symbol, DateTime start_time_interval, DateTime end_time_interval, 
+            DateTime ending_date_time, string filename_of_csv)
         {
              
         }
