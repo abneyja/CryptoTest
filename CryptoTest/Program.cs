@@ -12,11 +12,12 @@ namespace CryptoTest
 {
     public class Program
     {
+        static readonly int spanAttr = int.Parse(ConfigurationManager.AppSettings.Get("time_span"));
+        static readonly int intervalAttr = int.Parse(ConfigurationManager.AppSettings.Get("number_of_intervals"));
+
         private static List<string> PLATFORM_NAME = new List<string>(){ "BINC"};
         static async Task Main(string[] args)
-        {
-            int spanAttr = int.Parse(ConfigurationManager.AppSettings.Get("time_span"));
-            int intervalAttr = int.Parse(ConfigurationManager.AppSettings.Get("number_of_intervals"));
+        {   
             string symbol;
             DateTime starting_date_time;
             DateTime ending_date_time;
@@ -56,7 +57,7 @@ namespace CryptoTest
                     while (end_time_interval.CompareTo(ending_date_time) <= 0)
                     {
                         string filename_of_csv = PLATFORM_NAME[0] + "-" + symbol + "-" + starting_date_time.ToString("yyyyMMdd_HHmm") + "_" + ending_date_time.ToString("yyyyMMdd_HHmm");
-                        await new CryptoTestBinance().get_aggTrades(symbol, intervalAttr, spanAttr, start_time_interval, end_time_interval, ending_date_time, filename_of_csv);
+                        await new CryptoTestBinance().get_aggTrades(symbol, start_time_interval, end_time_interval, ending_date_time, filename_of_csv);
                         start_time_interval = end_time_interval;
                         end_time_interval = end_time_interval.AddMinutes(spanAttr);
                     }                    

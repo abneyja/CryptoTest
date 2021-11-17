@@ -47,8 +47,8 @@ namespace CryptoTest
             }
         }
 
-        public override async Task get_aggTrades(string symbol, int intervalAttr, int spanAttr, DateTime start_time_interval,
-            DateTime end_time_interval, DateTime ending_date_time, string filename_of_csv)
+        public override async Task get_aggTrades(string symbol, DateTime start_time_interval, DateTime end_time_interval,
+            DateTime ending_date_time, string filename_of_csv)
         {            
             DateTime new_starting_date_time = start_time_interval;
             DateTime new_ending_date_time = new_starting_date_time.AddSeconds(15);
@@ -110,10 +110,10 @@ namespace CryptoTest
                         }
 
                         moving_average = Decimal.Round(moving_average / intervalAttr, 2);
-                        CryptoTestInfoList.Add(new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), spanAttr.ToString(), average_price.ToString(),
+                        CryptoTestInfoList.Add(new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), average_price.ToString(),
                             trade_count.ToString(), moving_average.ToString()));
 
-                        new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), spanAttr.ToString(),
+                        new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"),
                             average_price.ToString(), trade_count.ToString(), moving_average.ToString()));
 
                         Stream SaveFileStream = File.Create(FileName);
@@ -130,10 +130,10 @@ namespace CryptoTest
                         }
 
                         moving_average = Decimal.Round(moving_average / intervalAttr, 2);
-                        CryptoTestInfoList.Add(new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), spanAttr.ToString(), average_price.ToString(),
+                        CryptoTestInfoList.Add(new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), average_price.ToString(),
                             trade_count.ToString(), moving_average.ToString()));
 
-                        new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), spanAttr.ToString(),
+                        new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), 
                             average_price.ToString(), trade_count.ToString(), moving_average.ToString()));
 
                         Stream SaveFileStream = File.Create(FileName);
@@ -149,10 +149,10 @@ namespace CryptoTest
                     
                     var moving_average = Decimal.Round((average_price * intervalAttr) / intervalAttr, 2);
 
-                    CryptoTestInfoList.Add(new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), spanAttr.ToString(), average_price.ToString(), 
+                    CryptoTestInfoList.Add(new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), average_price.ToString(),
                         trade_count.ToString(), moving_average.ToString()));
 
-                    new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), spanAttr.ToString(), 
+                    new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"),
                         average_price.ToString(), trade_count.ToString(), moving_average.ToString()));
 
                     Stream SaveFileStream = File.Create(FileName);
