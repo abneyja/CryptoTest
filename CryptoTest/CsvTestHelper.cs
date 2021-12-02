@@ -21,7 +21,7 @@ namespace CryptoTest
             };
             try
             {
-                EnsureDirectoryExists(Directory.GetCurrentDirectory() + "\\csv\\");
+                CryptoLib.EnsureDirectoryExists(Directory.GetCurrentDirectory() + "\\csv\\");
                 if (File.Exists(path))
                 {
                     var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -50,14 +50,6 @@ namespace CryptoTest
                 Console.WriteLine("Error writing CSV file, " + e.Message);
             }
 
-        }
-        public static void EnsureDirectoryExists(string filePath)
-        {
-            FileInfo fi = new FileInfo(filePath);
-            if (!fi.Directory.Exists)
-            {
-                System.IO.Directory.CreateDirectory(fi.DirectoryName);
-            }
         }
 
     }

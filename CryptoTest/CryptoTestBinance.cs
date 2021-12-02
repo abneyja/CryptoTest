@@ -9,7 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CryptoTest
 {
-    public class CryptoTestBinance : CryptoTestHelper
+    public class CryptoTestBinance : IntervalBuilderSvc
     {
         private static int LIMIT = 1000;        
         
@@ -89,10 +89,8 @@ namespace CryptoTest
                 if (File.Exists(FileName))
                 {
                     Console.WriteLine("Reading saved file");
-                    Stream openFileStream = File.OpenRead(FileName);
-                    BinaryFormatter deserializer = new BinaryFormatter();
-                    List<CryptoTestInfo> CryptoTestInfoList = (List<CryptoTestInfo>)deserializer.Deserialize(openFileStream);
-                    openFileStream.Close();
+
+                    List<CryptoTestInfo> CryptoTestInfoList = CryptoLib.getSerializedObject(FileName);
 
                     var moving_average = average_price;
 
@@ -116,10 +114,7 @@ namespace CryptoTest
                         new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"),
                             average_price.ToString(), trade_count.ToString(), moving_average.ToString()));
 
-                        Stream SaveFileStream = File.Create(FileName);
-                        BinaryFormatter serializer = new BinaryFormatter();
-                        serializer.Serialize(SaveFileStream, CryptoTestInfoList);
-                        SaveFileStream.Close();
+                        CryptoLib.setSerializedObject(FileName, CryptoTestInfoList);
                     }
                     else
                     {
@@ -136,10 +131,7 @@ namespace CryptoTest
                         new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"), 
                             average_price.ToString(), trade_count.ToString(), moving_average.ToString()));
 
-                        Stream SaveFileStream = File.Create(FileName);
-                        BinaryFormatter serializer = new BinaryFormatter();
-                        serializer.Serialize(SaveFileStream, CryptoTestInfoList);
-                        SaveFileStream.Close();
+                        CryptoLib.setSerializedObject(FileName, CryptoTestInfoList);
                     }
                 }
                 else
@@ -155,10 +147,7 @@ namespace CryptoTest
                     new CsvTestHelper(filename_of_csv, new CryptoTestInfo(start_time_interval.ToString("yy-MM-dd:HH:mm:ss"),
                         average_price.ToString(), trade_count.ToString(), moving_average.ToString()));
 
-                    Stream SaveFileStream = File.Create(FileName);
-                    BinaryFormatter serializer = new BinaryFormatter();
-                    serializer.Serialize(SaveFileStream, CryptoTestInfoList);
-                    SaveFileStream.Close();
+                    CryptoLib.setSerializedObject(FileName, CryptoTestInfoList);
                 }
             }
             catch(Exception e)

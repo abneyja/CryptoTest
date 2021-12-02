@@ -9,10 +9,10 @@ using System.Collections.Specialized;
 namespace CryptoTest
 {
     [Serializable()]
-    class CryptoTestInfo
+    public class CryptoTestInfo
     {
-        static readonly int spanAttr = int.Parse(ConfigurationManager.AppSettings.Get("time_span"));
-        static readonly int intervalAttr = int.Parse(ConfigurationManager.AppSettings.Get("number_of_intervals"));
+        private static readonly int spanAttr = int.Parse(CryptoLib.interval_timespan);
+        private static readonly int intervalAttr = int.Parse(CryptoLib.interval_size);
 
         static CryptoTestInfo() { }
         public CryptoTestInfo(string starting_date, string average_price, string trade_count, string moving_average)
@@ -26,7 +26,7 @@ namespace CryptoTest
         public string starting_date { get; set; }
         public string interval_timespan
         {
-            get => intervalAttr.ToString();
+            get => spanAttr.ToString();
         }
         public string average_price { get; set; }
         public string trade_count { get; set; }

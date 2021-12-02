@@ -7,7 +7,7 @@ using Coinbase;
 
 namespace CryptoTest
 {
-    class CryptoTestCoinbase : CryptoTestHelper
+    class CryptoTestCoinbase : IntervalBuilderSvc
     {
         private CoinbaseClient client;
 
